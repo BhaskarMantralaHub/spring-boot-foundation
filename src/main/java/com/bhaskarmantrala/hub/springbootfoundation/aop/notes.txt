@@ -1,0 +1,5 @@
+Aspect Oriented Programming
+
+https://www.youtube.com/watch?v=x2f4NzNCkCI
+
+Cross Cutting Concerns => Moving non-business logic outside of Business logic like transactions, logging, security, ...
