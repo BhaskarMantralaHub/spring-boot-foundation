@@ -1,13 +1,11 @@
 package com.bhaskarmantrala.hub.springbootfoundation.config;
 
+import com.bhaskarmantrala.hub.springbootfoundation.aop.components.DAOComponent;
 import com.bhaskarmantrala.hub.springbootfoundation.model.Offer;
 import com.bhaskarmantrala.hub.springbootfoundation.model.Source;
 import com.bhaskarmantrala.hub.springbootfoundation.model.TestBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 
 import java.util.Date;
@@ -16,8 +14,11 @@ import java.util.Date;
  * @author venkata.mantrala
  */
 @Configuration
-@ComponentScan(basePackages = "com.bhaskarmantrala.hub.springbootfoundation.configcomponents")
+@ComponentScan({"com.bhaskarmantrala.hub.springbootfoundation.configcomponents",
+        "com.bhaskarmantrala.hub.springbootfoundation.aop.components",
+        "com.bhaskarmantrala.hub.springbootfoundation.aop.aspects"})
 @PropertySource("classpath:qa_custom.properties")
+@EnableAspectJAutoProxy
 public class BeanConfiguration {
 
     @Autowired

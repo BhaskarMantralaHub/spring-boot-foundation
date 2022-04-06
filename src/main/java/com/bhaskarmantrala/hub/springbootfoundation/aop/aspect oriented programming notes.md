@@ -12,7 +12,7 @@ Business Classes will be binded with Aspect classes
 
 **Terminologies:**
 1. Aspect - Class - Like transactions, logging, security, ...
-2. Advice - Aspect Class methods
+2. Advice - Aspect Class methods and must be any one of the following:
    1. Before Advice - Before running business method
    2. After Advice - After running business method
    3. Around Advice - 2 Parts. Order of execution:
@@ -22,11 +22,38 @@ Business Classes will be binded with Aspect classes
       4. Second part
    4. After returning Advice - Only runs with successful business method response
    5. After throwing Advice - Only runs with failed business method response
-3. Pointcut - Defines business method who seeks advice 
+3. Pointcut - It is an expression and defines business method who seeks advice
+   1. Example: 
+   ```java
+      @Pointcut("execution(public * com.bhaskarmantrala.hub.springbootfoundation.*(..))")
+      public void pointCutMethod() {} 
+   ```
+
 4. JoinPoint - Specifies / Binds what advice is required by business method
+   1. Example:
+      ```java
+         import org.aspectj.lang.annotation.Before;
+         
+         @Pointcut("execution(public * com.bhaskarmantrala.hub.springbootfoundation.*(..))")
+         public void pointCutMethod() {} 
+      
+         @Before("pointCutMethod()")
+         public void adviceMethod() {}
+      ```
 5. Target - Business class object
 6. Weaving - Creates a new Proxy class consists of both business logic code and aspect logic together
-7. Proxy - JDK Dynamic Proxy - Class object with both business logic + aspect logic
+   **@EnableAspectJAutoProxy**
+```
+@SpringBootApplication
+@EnableAspectJAutoProxy
+public class SpringBootFoundationApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootFoundationApplication.class, args);
+	}
+}
+```
+
+8. Proxy - JDK Dynamic Proxy - Class object with both business logic + aspect logic
 
 `*****************************************************************`
 
