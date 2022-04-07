@@ -16,6 +16,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class SpringBootFoundationApplication {
 
 	public static void main(String[] args) {
+		System.setProperty("target_env", "qa");
 		SpringApplication.run(SpringBootFoundationApplication.class, args);
 	}
 
